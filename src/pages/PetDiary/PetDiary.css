@@ -1,0 +1,247 @@
+/* PetDiary.css - Foco no layout lado a lado */
+
+.pet-diary {
+  min-height: calc(100vh - 140px);
+  background-color: #f0f0f0;
+  padding: 2rem 0;
+}
+
+.pet-diary-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.pet-diary-title {
+  font-size: 1.5rem;
+  color: #17936a;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 10px;
+  margin-bottom: 30px; /* Aumentei o margin para mais espaço */
+  text-align: center;
+  font-weight: bold;
+}
+
+/* ======================================================= */
+/* GRID LADO A LADO - APENAS NO DIÁRIO PET */
+/* ======================================================= */
+
+.pets-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  justify-content: center;
+  align-items: start; /* Alinha os cards no topo */
+}
+
+.pet-card {
+  background-color: #fff;
+  padding: 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border: 1px solid #e0e0e0;
+  height: fit-content; /* Ajusta altura ao conteúdo */
+}
+
+.pet-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.pet-image {
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(135deg, #17936a 0%, #0d4d29 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 8px 8px 0 0;
+}
+
+.pet-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pet-image-placeholder {
+  font-size: 3rem;
+  color: white;
+  opacity: 0.8;
+}
+
+.pet-info {
+  padding: 20px;
+}
+
+.pet-name {
+  font-size: 1.4rem; /* Um pouco menor para caber melhor */
+  color: #0d4d29;
+  margin-bottom: 15px;
+  text-align: center;
+  font-weight: bold;
+  border-bottom: 2px solid #17936a;
+  padding-bottom: 8px;
+}
+
+.pet-details {
+  margin-bottom: 20px;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #ecf0f1;
+}
+
+.detail-item:last-child {
+  border-bottom: none;
+}
+
+.label {
+  font-weight: 600;
+  color: #34495e;
+  font-size: 0.9rem;
+}
+
+.value {
+  color: #666;
+  font-weight: 500;
+}
+
+.pet-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.action-link {
+  display: inline-block;
+  padding: 10px 15px;
+  background-color: #17936a;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 0.85rem;
+  transition: background-color 0.3s;
+  text-align: center;
+  flex: 1;
+  min-width: 90px;
+  border: none;
+  cursor: pointer;
+}
+
+.action-link:hover {
+  background-color: #0d4d29;
+  color: #fff;
+}
+
+/* Estilo para o card do "Adicionar Pet" */
+.pet-card:last-child {
+  background-color: #f8f9fa;
+  border: 2px dashed #ccc;
+}
+
+.pet-card:last-child .pet-name {
+  color: #666;
+  border-bottom-color: #ccc;
+}
+
+.pet-card:last-child .value {
+  color: #999;
+  font-style: italic;
+}
+
+.pet-card:last-child .action-link {
+  background-color: #6c757d;
+}
+
+.pet-card:last-child .action-link:hover {
+  background-color: #545b62;
+}
+
+/* ======================================================= */
+/* RESPONSIVIDADE */
+/* ======================================================= */
+
+@media (max-width: 768px) {
+  .pet-diary-container {
+    padding: 0 1rem;
+  }
+  
+  .pet-diary-title {
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+  }
+  
+  /* No mobile, volta a ser uma coluna só */
+  .pets-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .pet-card {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .pet-actions {
+    flex-direction: column;
+  }
+  
+  .action-link {
+    flex: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .pet-diary {
+    padding: 1.5rem 0;
+  }
+  
+  .pet-diary-title {
+    font-size: 1.3rem;
+  }
+  
+  .pet-name {
+    font-size: 1.2rem;
+  }
+  
+  .detail-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
+    padding: 6px 0;
+  }
+  
+  .pet-image {
+    height: 160px;
+  }
+  
+  .action-link {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+  }
+}
+
+/* ======================================================= */
+/* AJUSTES PARA TELAS GRANDES - MAIS CARDS POR LINHA */
+/* ======================================================= */
+
+@media (min-width: 1200px) {
+  .pets-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 cards por linha em telas grandes */
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .pets-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 cards por linha em tablets */
+  }
+}

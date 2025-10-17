@@ -1,22 +1,15 @@
-/* App.css */
-.app-container {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
+/* ======================================================= */
+/* RESET E CONFIGURAÇÕES GERAIS */
+/* ======================================================= */
 
-.main-content {
-  flex: 1; /* Isso faz o conteúdo crescer e empurra o footer para baixo */
-}
-
-
-
+/* Reset global para garantir consistência entre navegadores */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
+/* Estilos base do body */
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f0f0f0;
@@ -24,10 +17,39 @@ body {
     line-height: 1.6;
 }
 
-.conteudo-principal {
-    padding: 20px;
+/* ======================================================= */
+/* LAYOUT PRINCIPAL DO APP */
+/* ======================================================= */
+
+/* Container principal do app - usa flexbox para empurrar o footer para baixo */
+.app-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
+/* Conteúdo principal que cresce e empurra o footer para baixo */
+.main-content {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* CENTRALIZA horizontalmente */
+}
+
+/* Container genérico para conteúdo das páginas - AGORA CENTRALIZADO */
+.conteudo-principal {
+    padding: 20px;
+    width: 100%;
+    max-width: 1200px; /* Limita largura máxima */
+    margin: 0 auto; /* Centraliza o conteúdo */
+}
+
+/* ======================================================= */
+/* COMPONENTES COMPARTILHADOS */
+/* ======================================================= */
+
+/* --- ESTILOS DE TÍTULOS --- */
 h2 {
     font-size: 1.5rem;
     color: #17936a;
@@ -37,29 +59,41 @@ h2 {
     text-align: center;
 }
 
+/* --- CARDS (CAIXAS DE CONTEÚDO) --- */
+.card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
 
-/* Componentes Compartilhados */
+/* ======================================================= */
+/* HEADER/NAVEGAÇÃO PRINCIPAL */
+/* ======================================================= */
 
-
-/* --- Cabeçalho e Navegação --- */
+/* Container do cabeçalho */
 .cabecalho {
     position: relative;
     text-align: center;
+    width: 100%;
 }
 
+/* Imagem hero do header */
 .hero img {
     width: 100%;
-    height: auto ;
-    display: block;
-}
-
-/* Classe para imagens responsivas em qualquer local */
-.responsive-img {
-    max-width: 80%;
     height: auto;
     display: block;
 }
 
+/* Classe para imagens responsivas */
+.responsive-img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Título do logo */
 .logo-titulo {
     position: static;
     margin: 0;
@@ -69,13 +103,7 @@ h2 {
     white-space: normal;
 }
 
-/* Ajustes visuais quando o título estiver dentro da sidebar */
-.sidebar .logo-titulo {
-    color: #fff;
-    font-weight: 700;
-    text-shadow: none;
-}
-
+/* Navegação principal */
 .navegacao {
     background-color: transparent;
     display: flex;
@@ -85,6 +113,7 @@ h2 {
     box-shadow: none;
 }
 
+/* Itens de navegação */
 .nav-item {
     color: #fff;
     text-decoration: none;
@@ -103,115 +132,20 @@ h2 {
 }
 
 /* ======================================================= */
-/* Sidebar styles */
+/* PÁGINA HOME - ESTILOS ESPECÍFICOS */
 /* ======================================================= */
-.sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 220px;
-    background-color: #17936a;
-    color: #fff;
-    padding: 20px 10px;
-    box-shadow: 2px 0 6px rgba(0,0,0,0.1);
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    z-index: 1000;
-}
 
-.sidebar-top {
-    text-align: center;
-    position: relative;
-}
-
-.sidebar-logo {
-    width: 100%;
-    max-width: 140px;
-    height: auto;
-    border-radius: 8px;
-    display: block;
-    margin: 0 auto 8px auto;
-}
-
-.sidebar .nav-item {
-    display: block;
-    padding: 10px 12px;
-    margin: 4px 0;
-    border-radius: 6px;
-    color: #fff;
-}
-
-.sidebar .nav-item.ativo {
-    background-color: #0d4d29;
-}
-
-/* Push main content to the right to make space for the sidebar on desktop */
-.main-with-sidebar {
-    margin-left: 240px; /* sidebar width + some gap */
-}
-
-/* Mobile: convert sidebar into top bar */
-@media (max-width: 767px) {
-    .sidebar {
-        position: relative;
-        height: auto;
-        width: 100%;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        padding: 10px 12px;
-        box-shadow: none;
-    }
-
-    .sidebar-top {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-
-    .logo-titulo {
-        position: static;
-        transform: none;
-        font-size: 1.25rem;
-        white-space: normal;
-        color: #fff;
-        text-shadow: none;
-    }
-
-    .navegacao {
-        flex-direction: row;
-        background-color: transparent;
-    }
-
-    .main-with-sidebar {
-        margin-left: 0;
-    }
-}
-
-/* --- Cards (caixas de conteúdo) --- */
-.card {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-}
-
-/* ======================================================= */
-/* Estilos da Página Home (index.html) */
-/* ======================================================= */
 .secao-info {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
+/* Itens de pets na home */
 .pet-item {
     display: flex;
     align-items: center;
-    background-color: #e6f7ef;
+    background-color: #b0efd1;
     padding: 10px;
     border-radius: 5px;
     margin-bottom: 10px;
@@ -222,7 +156,7 @@ h2 {
     color: #0d4d29;
 }
 
-/* Estilos para a seção de notícias e produtos */
+/* Seção de extras (notícias e produtos) */
 .secao-extras {
     display: flex;
     flex-direction: column;
@@ -230,13 +164,15 @@ h2 {
 }
 
 /* ======================================================= */
-/* Estilos da Página Sobre (sobre.html) */
+/* PÁGINA SOBRE */
 /* ======================================================= */
+
 .secao-sobre p {
     font-size: 1rem;
     text-align: justify;
 }
 
+/* Container dos desenvolvedores */
 .devs-container {
     display: flex;
     flex-direction: column;
@@ -244,6 +180,7 @@ h2 {
     margin-top: 20px;
 }
 
+/* Cards dos desenvolvedores */
 .dev-card {
     background-color: #17936a;
     color: #fff;
@@ -260,13 +197,16 @@ h2 {
 }
 
 /* ======================================================= */
-/* Estilos da Página Cuidados (cuidadopet.html) */
+/* PÁGINA CUIDADOS (CHATBOT) */
 /* ======================================================= */
+
 .chatbot-container {
     max-width: 800px;
     margin: 20px auto;
+    width: 100%;
 }
 
+/* Caixa de chat */
 #chat-box {
     height: 400px;
     overflow-y: auto;
@@ -279,6 +219,7 @@ h2 {
     border-radius: 5px;
 }
 
+/* Mensagens do bot e usuário */
 .mensagem-bot, .mensagem-usuario {
     padding: 12px;
     border-radius: 15px;
@@ -298,6 +239,7 @@ h2 {
     color: #333;
 }
 
+/* Input do chat */
 .chat-input {
     display: flex;
     gap: 10px;
@@ -326,31 +268,155 @@ h2 {
     background-color: #0d4d29;
 }
 
+/* ======================================================= */
+/* ESTILOS ESPECÍFICOS DA HOME (LINKAGEM COM DIÁRIO PET) */
+/* ======================================================= */
+
+/* Lista de pets na seção "SEUS PETS" */
+.seus-pets .lista-pets {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.pet-item {
+    display: flex;
+    align-items: flex-start;
+    background-color: #b0efd1;
+    padding: 15px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.pet-item:hover {
+    background-color: #9ae0c0;
+}
+
+/* Ícones dos pets */
+.pet-icone {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: white;
+    font-size: 1.2rem;
+}
+
+/* Ícones específicos usando emojis */
+.dog-icon::before {
+    content: "🐕";
+}
+
+.cat-icon::before {
+    content: "🐈";
+}
+
+.add-icon::before {
+    content: "➕";
+}
+
+/* Detalhes dos pets */
+.pet-detalhes {
+    flex: 1;
+}
+
+.pet-detalhes h3 {
+    margin: 0 0 10px 0;
+    color: #0d4d29;
+    font-size: 1.1rem;
+}
+
+.pet-detalhes a {
+    color: #17936a;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+}
+
+.pet-detalhes a:hover {
+    color: #0d4d29;
+    text-decoration: underline;
+}
+
+/* Centralizar texto da seção "O QUE É?" */
+.card.o-que-e {
+    text-align: center;
+}
+
+.card.o-que-e p {
+    text-align: center;
+    margin: 15px 0;
+    line-height: 1.6;
+}
+
+/* Item especial "Ver Todos" */
+.pet-item.ver-todos {
+    background-color: #e9ecef;
+    border: 2px dashed #6c757d;
+}
+
+.pet-item.ver-todos:hover {
+    background-color: #dde1e6;
+}
+
+.pet-item.ver-todos h3 {
+    color: #495057;
+}
+
+/* Link destacado para o Diário Pet */
+.link-destacado {
+    display: inline-block;
+    background-color: #17936a;
+    color: white !important;
+    padding: 8px 16px;
+    border-radius: 5px;
+    text-decoration: none !important;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.link-destacado:hover {
+    background-color: #0d4d29;
+    color: white !important;
+    text-decoration: none !important;
+}
 
 /* ======================================================= */
-/* Media Queries para Responsividade (Desktop) */
+/* RESPONSIVIDADE - TABLET E DESKTOP (768px+) */
 /* ======================================================= */
+
 @media (min-width: 768px) {
+    /* Navegação em linha no desktop */
     .navegacao {
         justify-content: center;
         gap: 30px;
     }
 
+    /* Layout em colunas para desktop */
     .conteudo-principal {
         display: flex;
         gap: 20px;
+        padding: 30px; /* Mais padding no desktop */
     }
     
     .secao-info, .secao-extras {
         flex: 1;
     }
 
+    /* Centralização de elementos específicos */
     .secao-sobre, .chatbot-container {
         width: 80%;
         margin-left: auto;
         margin-right: auto;
     }
 
+    /* Desenvolvedores em linha no desktop */
     .devs-container {
         flex-direction: row;
         justify-content: space-around;
@@ -360,4 +426,92 @@ h2 {
     .dev-card {
         flex: 1;
     }
+}
+
+/* ======================================================= */
+/* RESPONSIVIDADE - MOBILE (768px-) */
+/* ======================================================= */
+
+@media (max-width: 767px) {
+    /* Ajustes para mobile */
+    .conteudo-principal {
+        padding: 15px;
+    }
+    
+    /* Itens de pet em coluna no mobile */
+    .pet-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .pet-icone {
+        margin-right: 0;
+        margin-bottom: 10px;
+        align-self: center;
+    }
+    
+    /* Links em bloco no mobile */
+    .pet-detalhes a {
+        display: block;
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+    
+    .link-destacado {
+        display: block;
+        text-align: center;
+    }
+}
+
+/* ======================================================= */
+/* RESPONSIVIDADE - MOBILE PEQUENO (480px-) */
+/* ======================================================= */
+
+@media (max-width: 480px) {
+    .conteudo-principal {
+        padding: 10px;
+    }
+    
+    .card {
+        padding: 15px;
+    }
+    
+    h2 {
+        font-size: 1.3rem;
+    }
+}
+
+/* ======================================================= */
+/* GARANTIAS DE CENTRALIZAÇÃO - CORREÇÃO CRÍTICA */
+/* ======================================================= */
+
+/* GARANTE que todo o conteúdo fique centralizado */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* Container principal CENTRALIZADO */
+.conteudo-principal {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Garante que containers específicos também fiquem centralizados */
+.petcare-container,
+.chatbot-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Remove qualquer margin residual */
+body, html, #root, .app-container {
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }

@@ -1,0 +1,132 @@
+.petcare-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.petcare-card {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.petcare-card h2 {
+  font-size: 1.5rem;
+  color: #17936a;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.petcare-content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.petcare-section {
+  text-align: center;
+}
+
+.petcare-subtitle {
+  font-size: 1.3rem;
+  color: #0d4d29;
+  margin-bottom: 15px;
+  font-weight: bold;
+  text-align: center;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 8px;
+}
+
+.petcare-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333;
+  text-align: justify;
+  text-align-last: center;
+  margin: 0;
+  padding: 0 10px;
+}
+
+/* Destaques para informações importantes */
+.petcare-text strong {
+  color: #17936a;
+  font-weight: 600;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .petcare-container {
+    padding: 15px;
+  }
+  
+  .petcare-card {
+    padding: 20px;
+  }
+  
+  .petcare-card h2 {
+    font-size: 1.4rem;
+    margin-bottom: 25px;
+  }
+  
+  .petcare-subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .petcare-text {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    padding: 0 5px;
+  }
+  
+  .petcare-content {
+    gap: 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .petcare-container {
+    padding: 10px;
+  }
+  
+  .petcare-card {
+    padding: 15px;
+  }
+  
+  .petcare-card h2 {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+  }
+  
+  .petcare-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .petcare-text {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    text-align: left;
+    text-align-last: left;
+    padding: 0;
+  }
+  
+  .petcare-content {
+    gap: 20px;
+  }
+}
+
+/* Estilo para quando estiver com sidebar 
+.main-with-sidebar .petcare-container {
+  max-width: 100%;
+} */
+
+/* Mobile com sidebar 
+@media (max-width: 767px) {
+  .main-with-sidebar .petcare-container {
+    padding: 10px 15px;
+  }
+}*/
