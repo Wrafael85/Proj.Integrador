@@ -7,7 +7,6 @@ import PetCare from "./pages/PetCare/PetCare";
 import PetDiary from "./pages/PetDiary/PetDiary";
 import "./App.css";
 
-
 function App() {
   return (
     <Router>

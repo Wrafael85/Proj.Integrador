@@ -55,7 +55,7 @@ h2 {
 
 /* Classe para imagens responsivas em qualquer local */
 .responsive-img {
-    max-width: 10%;
+    max-width: 80%;
     height: auto;
     display: block;
 }
