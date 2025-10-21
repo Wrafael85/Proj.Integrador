@@ -2,14 +2,14 @@
 
 .pet-diary {
   min-height: calc(100vh - 140px);
-  background-color: #f0f0f0;
+  background-color: #e2d9d9;
   padding: 2rem 0;
 }
 
 .pet-diary-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 2px;
 }
 
 .pet-diary-title {
@@ -114,7 +114,7 @@
 }
 
 .pet-actions {
-  display: flex;
+  display: flexbox;
   gap: 8px;
   flex-wrap: wrap;
   justify-content: center;
