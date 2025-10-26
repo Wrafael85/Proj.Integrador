@@ -1,7 +1,34 @@
+import { useEffect, useRef, useState } from "react";
 import "./Home.css";
 import { Link } from "react-router-dom";
 
+type Message = { sender: "user" | "bot"; text: string };
+
 export default function Home() {
+    const [messages, setMessages] = useState<Message[]>([
+        { sender: "bot", text: "Olá! Eu sou o assistente. Como posso ajudar sobre seu pet hoje?" },
+    ]);
+    const [input, setInput] = useState("");
+    const chatBoxRef = useRef<HTMLDivElement | null>(null);
+
+    useEffect(() => {
+        const el = chatBoxRef.current;
+        if (el) el.scrollTop = el.scrollHeight;
+    }, [messages]);
+
+    async function sendMessage() {
+        const text = input.trim();
+        if (!text) return;
+
+        setMessages((m) => [...m, { sender: "user", text }]);
+        setInput("");
+
+        // Placeholder bot response (replace with backend Gemini call)
+        setTimeout(() => {
+            setMessages((m) => [...m, { sender: "bot", text: `(Resposta simulada) Recebi: "${text}"` }]);
+        }, 650);
+    }
+
     return (
         <main className="conteudo-principal main-with-sidebar">
             <section className="secao-info">
@@ -67,6 +94,33 @@ export default function Home() {
                     <h2>PRODUTOS RECOMENDADOS</h2>
                     <p>Descubra produtos incríveis para seu pet...</p>
                 </div>
+            </section>
+
+            {/* Chatbot area (Gemini integration placeholder) */}
+            <section className="chatbot-container card">
+                <h2>Assistente (Chat)</h2>
+                <div id="chat-box" ref={chatBoxRef}>
+                    {messages.map((m, idx) => (
+                        <div key={idx} className={m.sender === 'bot' ? 'mensagem-bot' : 'mensagem-usuario'}>
+                            {m.text}
+                        </div>
+                    ))}
+                </div>
+
+                <div className="chat-input">
+                    <input
+                        id="user-input"
+                        placeholder="Escreva sua pergunta sobre o pet..."
+                        value={input}
+                        onChange={(e) => setInput(e.target.value)}
+                        onKeyDown={(e) => { if (e.key === 'Enter') sendMessage(); }}
+                    />
+                    <button type="button" onClick={sendMessage}>Enviar</button>
+                </div>
+
+                <small style={{ display: 'block', marginTop: 8, color: '#666' }}>
+                    Observação: a integração com Gemini deve ser feita no backend por segurança (não exponha chaves de API).
+                </small>
             </section>
         </main>
     );

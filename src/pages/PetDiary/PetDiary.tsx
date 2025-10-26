@@ -1,4 +1,4 @@
-import React from "react";
+
 import "./PetDiary.css";
 import { Link } from "react-router-dom";
 

@@ -1,0 +1,125 @@
+.chat-widget {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 2200;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.chat-toggle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  background-color: #17936a;
+  color: #fff;
+  font-size: 1.4rem;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(23, 147, 106, 0.22);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chat-toggle.open {
+  transform: rotate(20deg);
+}
+
+.chat-panel {
+  width: 320px;
+  max-width: calc(100vw - 40px);
+  max-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  margin-top: 12px;
+  padding: 0;
+  overflow: hidden;
+}
+
+.chat-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 12px 14px;
+  background: linear-gradient(90deg, #17936a, #0d6b4b);
+  color: #fff;
+}
+
+.chat-close {
+  background: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.chat-panel-body {
+  padding: 12px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: #fafafa;
+}
+
+.mensagem-bot, .mensagem-usuario {
+  padding: 10px 12px;
+  border-radius: 14px;
+  max-width: 84%;
+  word-wrap: break-word;
+}
+
+.mensagem-bot {
+  background: #e6f7ef;
+  color: #0d4d29;
+  align-self: flex-start;
+}
+
+.mensagem-usuario {
+  background: #d1e7dd;
+  color: #033;
+  align-self: flex-end;
+}
+
+.chat-input {
+  display: flex;
+  gap: 8px;
+  padding: 10px;
+  border-top: 1px solid rgba(0,0,0,0.06);
+  background: #fff;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+.chat-input button {
+  background-color: #17936a;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.chat-note {
+  padding: 8px 12px;
+  font-size: 0.75rem;
+  color: #666;
+  background: #fff;
+}
+
+/* small screens: make the panel wider and near-full height */
+@media (max-width: 420px) {
+  .chat-panel {
+    width: calc(100vw - 24px);
+    max-height: 80vh;
+  }
+}

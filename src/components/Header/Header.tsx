@@ -1,6 +1,6 @@
-import React from "react";
 import "./Header.css";
 import { Link } from "react-router-dom";
+import ChatWidget from "../Chat/ChatWidget";
 
 const Header = () => {
   return (
@@ -21,6 +21,8 @@ const Header = () => {
           <p>Conheça dicas, registros e tudo sobre o bem-estar do seu pet.</p>
         </div>
       </div>
+      {/* Chat widget floating (open from header) */}
+      <ChatWidget />
     </header>
   );
 };
