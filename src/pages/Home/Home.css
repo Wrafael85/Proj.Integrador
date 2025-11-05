@@ -1,4 +1,3 @@
-
 * {
     box-sizing: border-box;
     margin: 0;
@@ -25,9 +24,7 @@ h2 {
     text-align: center;
 }
 
-
 /* Componentes Compartilhados */
-
 
 /* --- Cabeçalho e Navegação --- */
 .cabecalho {
@@ -248,74 +245,6 @@ h2 {
 }
 
 /* ======================================================= */
-/* Estilos da Página Cuidados (cuidadopet.html) */
-/* ======================================================= */
-.chatbot-container {
-    max-width: 800px;
-    margin: 20px auto;
-}
-
-#chat-box {
-    height: 400px;
-    overflow-y: auto;
-    border: 1px solid #ccc;
-    padding: 15px;
-    margin-bottom: 15px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    border-radius: 5px;
-}
-
-.mensagem-bot, .mensagem-usuario {
-    padding: 12px;
-    border-radius: 15px;
-    max-width: 80%;
-    word-wrap: break-word;
-}
-
-.mensagem-bot {
-    background-color: #e6f7ef;
-    align-self: flex-start;
-    color: #17936a;
-}
-
-.mensagem-usuario {
-    background-color: #d1e7dd;
-    align-self: flex-end;
-    color: #333;
-}
-
-.chat-input {
-    display: flex;
-    gap: 10px;
-}
-
-#user-input {
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1rem;
-}
-
-.chat-input button {
-    padding: 10px 15px;
-    background-color: #17936a;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s;
-}
-
-.chat-input button:hover {
-    background-color: #0d4d29;
-}
-
-
-/* ======================================================= */
 /* Media Queries para Responsividade (Desktop) */
 /* ======================================================= */
 @media (min-width: 768px) {
@@ -333,7 +262,7 @@ h2 {
         flex: 1;
     }
 
-    .secao-sobre, .chatbot-container {
+    .secao-sobre {
         width: 80%;
         margin-left: auto;
         margin-right: auto;
@@ -348,141 +277,142 @@ h2 {
     .dev-card {
         flex: 1;
     }
-/* MUDANÇAS 17/10 PARA LINKAR HOME A MEUS PETS */
-.seus-pets .lista-pets {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
 
-.pet-item {
-    display: flex;
-    align-items: flex-start;
-    background-color: #b0efd1;
-    padding: 15px;
-    border-radius: 8px;
-    transition: background-color 0.3s ease;
-}
-
-.pet-item:hover {
-    background-color: #9ae0c0;
-}
-
-.pet-icone {
-    width: 40px;
-    height: 40px;
-    margin-right: 15px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    color: white;
-    font-size: 1.2rem;
-}
-
-/* Ícones usando pseudo-elementos ou emoji direto */
-.dog-icon::before {
-    content: "🐕";
-}
-
-.cat-icon::before {
-    content: "🐈";
-}
-
-.add-icon::before {
-    content: "➕";
-}
-
-/* Ou simplesmente usando classes com emoji no HTML - MÉTODO MAIS SIMPLES */
-.pet-detalhes {
-    flex: 1;
-}
-
-.pet-detalhes h3 {
-    margin: 0 0 10px 0;
-    color: #0d4d29;
-    font-size: 1.1rem;
-}
-
-.pet-detalhes a {
-    color: #17936a;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.9rem;
-    margin-right: 15px;
-    transition: color 0.3s ease;
-}
-
-.pet-detalhes a:hover {
-    color: #0d4d29;
-    text-decoration: underline;
-}
-
-/* Centralizar texto do "O QUE É?" */
-.card.o-que-e {
-    text-align: center;
-}
-
-.card.o-que-e p {
-    text-align: center;
-    margin: 15px 0;
-    line-height: 1.6;
-}
-
-/* Item especial "Ver Todos" */
-.pet-item.ver-todos {
-    background-color: #e9ecef;
-    border: 2px dashed #6c757d;
-}
-
-.pet-item.ver-todos:hover {
-    background-color: #dde1e6;
-}
-
-.pet-item.ver-todos h3 {
-    color: #495057;
-}
-
-.link-destacado {
-    display: inline-block;
-    background-color: #17936a;
-    color: white !important;
-    padding: 8px 16px;
-    border-radius: 5px;
-    text-decoration: none !important;
-    font-weight: bold;
-    margin-top: 5px;
-}
-
-.link-destacado:hover {
-    background-color: #0d4d29;
-    color: white !important;
-    text-decoration: none !important;
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-    .pet-item {
+    /* MUDANÇAS 17/10 PARA LINKAR HOME A MEUS PETS */
+    .seus-pets .lista-pets {
+        display: flex;
         flex-direction: column;
-        text-align: center;
+        gap: 15px;
     }
-    
+
+    .pet-item {
+        display: flex;
+        align-items: flex-start;
+        background-color: #b0efd1;
+        padding: 15px;
+        border-radius: 8px;
+        transition: background-color 0.3s ease;
+    }
+
+    .pet-item:hover {
+        background-color: #9ae0c0;
+    }
+
     .pet-icone {
-        margin-right: 0;
-        margin-bottom: 10px;
-        align-self: center;
+        width: 40px;
+        height: 40px;
+        margin-right: 15px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        color: white;
+        font-size: 1.2rem;
     }
-    
+
+    /* Ícones usando pseudo-elementos ou emoji direto */
+    .dog-icon::before {
+        content: "🐕";
+    }
+
+    .cat-icon::before {
+        content: "🐈";
+    }
+
+    .add-icon::before {
+        content: "➕";
+    }
+
+    /* Ou simplesmente usando classes com emoji no HTML - MÉTODO MAIS SIMPLES */
+    .pet-detalhes {
+        flex: 1;
+    }
+
+    .pet-detalhes h3 {
+        margin: 0 0 10px 0;
+        color: #0d4d29;
+        font-size: 1.1rem;
+    }
+
     .pet-detalhes a {
-        display: block;
-        margin-right: 0;
-        margin-bottom: 5px;
+        color: #17936a;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.9rem;
+        margin-right: 15px;
+        transition: color 0.3s ease;
     }
-    
-    .link-destacado {
-        display: block;
+
+    .pet-detalhes a:hover {
+        color: #0d4d29;
+        text-decoration: underline;
+    }
+
+    /* Centralizar texto do "O QUE É?" */
+    .card.o-que-e {
         text-align: center;
     }
-}
+
+    .card.o-que-e p {
+        text-align: center;
+        margin: 15px 0;
+        line-height: 1.6;
+    }
+
+    /* Item especial "Ver Todos" */
+    .pet-item.ver-todos {
+        background-color: #e9ecef;
+        border: 2px dashed #6c757d;
+    }
+
+    .pet-item.ver-todos:hover {
+        background-color: #dde1e6;
+    }
+
+    .pet-item.ver-todos h3 {
+        color: #495057;
+    }
+
+    .link-destacado {
+        display: inline-block;
+        background-color: #17936a;
+        color: white !important;
+        padding: 8px 16px;
+        border-radius: 5px;
+        text-decoration: none !important;
+        font-weight: bold;
+        margin-top: 5px;
+    }
+
+    .link-destacado:hover {
+        background-color: #0d4d29;
+        color: white !important;
+        text-decoration: none !important;
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+        .pet-item {
+            flex-direction: column;
+            text-align: center;
+        }
+        
+        .pet-icone {
+            margin-right: 0;
+            margin-bottom: 10px;
+            align-self: center;
+        }
+        
+        .pet-detalhes a {
+            display: block;
+            margin-right: 0;
+            margin-bottom: 5px;
+        }
+        
+        .link-destacado {
+            display: block;
+            text-align: center;
+        }
+    }
 }

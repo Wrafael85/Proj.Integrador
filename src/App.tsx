@@ -6,6 +6,7 @@ import About from "./pages/About/About";
 import PetCare from "./pages/PetCare/PetCare";
 import PetDiary from "./pages/PetDiary/PetDiary";
 import "./App.css";
+import GeminiTest from "./GeminiTest";
 
 function App() {
   return (
@@ -19,6 +20,9 @@ function App() {
             <Route path="/petcare" element={<PetCare />} />
             <Route path="/petdiary" element={<PetDiary />} />
           </Routes>
+
+          {/* Teste Gemini dentro do conteúdo principal */}
+          <GeminiTest />
         </main>
         <Footer />
       </div>
