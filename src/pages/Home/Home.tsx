@@ -8,13 +8,13 @@ export default function Home() {
                 <div className="card o-que-e">
                     <h2>O QUE É?</h2>
                     <p>
-                        MEU DIARIO PET É SEU MAIS NOVO ESPAÇO VIRTUAL DE GERENCIAMENTO DE
-                        ANIMAIS DE ESTIMAÇÃO. CONSULTAS, VACINAS, HISTÓRICO, TUDO DISPONÍVEL
-                        COM UM SIMPLES CLIQUE.
+                        Meu Diario Pet é seu mais novo espaço virtual de gerenciamento de
+                        animais de estimação. Consultas, vacinas, histórico, tudo disponível
+                        com um simples clique.
                     </p>
                     <p>
-                        CADASTRE GRATUITAMENTE QUANTOS ANIMAIS QUISER. RECEBA DICAS E
-                        NOTÍCIAS DE COMO CUIDAR MELHOR DO SEU PET.
+                        Cadastre gratuitamente quantos animais quiser. Receba dicas e
+                        notícias de como cuidar melhor do seu pet.
                     </p>
                 </div>
 
