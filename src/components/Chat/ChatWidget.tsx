@@ -3,6 +3,7 @@ import "./Chat.css";
 import GeminiTest from "../../GeminiTest.tsx";
 
 
+// Tipagem das mensagens (usuário ou bot)
 type Message = { sender: "user" | "bot"; text: string };
 
 export default function ChatWidget() {
@@ -13,6 +14,10 @@ export default function ChatWidget() {
   const [input, setInput] = useState("");
   const chatBoxRef = useRef<HTMLDivElement | null>(null);
 
+  
+  const API_KEY = "AIzaSyDbIYXRBm4-DdQioibGLoyeFUJgrqs588Q";
+
+  // Sempre que abrir o chat ou receber nova mensagem, rola pra baixo
   useEffect(() => {
     if (open) {
       const el = chatBoxRef.current;
@@ -20,56 +25,108 @@ export default function ChatWidget() {
     }
   }, [messages, open]);
 
+<<<<<<< HEAD
   function fuggleOpen() {
+=======
+  // Alterna abrir/fechar o chat
+  function toggleOpen() {
+>>>>>>> d017e17796552918c6f9d6048fd7476e4d80f8b2
     setOpen((s) => !s);
   }
 
-  function sendMessage() {
+  // Envia a mensagem do usuário e chama a API Gemini
+  async function sendMessage() {
     const text = input.trim();
     if (!text) return;
+
+    // Adiciona a mensagem do usuário
     setMessages((m) => [...m, { sender: "user", text }]);
     setInput("");
-    // call backend proxy to Gemini (recommended)
-    setMessages((m) => [...m, { sender: "bot", text: "..." }]); // temporary loading message
-    (async () => {
-      try {
-        const res = await fetch("/api/gemini", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ prompt: text }),
-        });
 
-        if (!res.ok) {
-          const err = await res.text();
-          // replace loading message with error
-          setMessages((m) => {
-            const withoutLoading = m.filter((mm) => mm.text !== "...");
-            return [...withoutLoading, { sender: "bot", text: "Desculpe, não foi possível obter resposta." }];
-          });
-          console.error("Gemini proxy error:", err);
-          return;
-        }
+    // Adiciona mensagem de "carregando"
+    setMessages((m) => [...m, { sender: "bot", text: "..." }]);
 
-        const data = await res.json();
-        const reply = data?.reply ?? JSON.stringify(data);
+    try {
+  const body = {
+   // WILLI NESSE TRECHO ESTAMOS DANDO CONTEXTO A IA 
+    contents: [
+    {
+      parts: [
+        {
+          text: `
+<ASSUNTO> = "Animais de estimação"
+<MSG_NEGATIVA_TOPICO> = "Apenas posso fornecer informações sobre <ASSUNTO>."
 
-        // replace loading "..." with actual reply
+Você é uma IA dentro de um site sobre <ASSUNTO>, que visa democratizar o acesso
+dos brasileiros a informações básicas sobre cuidados com animais de estimação.
+
+Regras:
+- Você responderá APENAS perguntas relacionadas a <ASSUNTO>.
+- Inclua animais exóticos, mas exclua animais selvagens.
+- Se o usuário fizer perguntas fora do tema, responda exatamente: <MSG_NEGATIVA_TOPICO>.
+- Não fuja do assunto nem invente temas fora do contexto.
+
+Pergunta do usuário:
+${text}
+          `,
+        },
+      ],
+    },
+  ],
+};
+
+
+      const url = `https://generativelanguage.googleapis.com/v1/models/gemini-2.0-flash:generateContent?key=${encodeURIComponent(
+        API_KEY
+      )}`;
+
+      // Faz a requisição à API
+      const resp = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+
+      if (!resp.ok) {
+        const errText = await resp.text();
+        console.error("Erro HTTP:", errText);
         setMessages((m) => {
-          const withoutLoading = m.filter((mm) => mm.text !== "...");
-          return [...withoutLoading, { sender: "bot", text: String(reply) }];
+          const msgs = m.filter((mm) => mm.text !== "...");
+          return [...msgs, { sender: "bot", text: "Desculpe, ocorreu um erro ao processar a resposta." }];
         });
-      } catch (error) {
-        setMessages((m) => {
-          const withoutLoading = m.filter((mm) => mm.text !== "...");
-          return [...withoutLoading, { sender: "bot", text: "Erro de rede ao contatar o servidor." }];
-        });
-        console.error(error);
+        return;
       }
-    })();
+
+      // Lê a resposta JSON e extrai o texto retornado pelo Gemini
+      const json = await resp.json();
+      let reply = "";
+
+      if (json?.candidates?.length) {
+        reply =
+          json.candidates
+            .map((c: any) => c?.content?.parts?.[0]?.text ?? "")
+            .join("\n") || "Sem resposta.";
+      } else {
+        reply = "Não foi possível interpretar a resposta do modelo.";
+      }
+
+      // Substitui "..." pela resposta real
+      setMessages((m) => {
+        const msgs = m.filter((mm) => mm.text !== "...");
+        return [...msgs, { sender: "bot", text: reply }];
+      });
+    } catch (err) {
+      console.error("Erro de rede:", err);
+      setMessages((m) => {
+        const msgs = m.filter((mm) => mm.text !== "...");
+        return [...msgs, { sender: "bot", text: "Erro de rede ao contatar o servidor." }];
+      });
+    }
   }
 
   return (
     <div className="chat-widget" aria-live="polite">
+      {/* Botão flutuante para abrir/fechar o chat */}
       <button
         className={`chat-toggle ${open ? "open" : ""}`}
         onClick={toggleOpen}
@@ -82,12 +139,13 @@ export default function ChatWidget() {
       {open && (
         <div className="chat-panel card">
           <div className="chat-panel-header">
-            <strong>Assistente</strong>
+            <strong>Assistente Pet</strong>
             <button className="chat-close" onClick={toggleOpen} aria-label="Fechar">
               ✕
             </button>
           </div>
 
+          {/* Corpo do chat */}
           <div id="chat-box" ref={chatBoxRef} className="chat-panel-body">
             {messages.map((m, i) => (
               <div key={i} className={m.sender === "bot" ? "mensagem-bot" : "mensagem-usuario"}>
@@ -96,18 +154,27 @@ export default function ChatWidget() {
             ))}
           </div>
 
+          {/* Campo de entrada e botão enviar */}
           <div className="chat-input">
             <input
               id="chat-input-header"
               placeholder="Escreva sua pergunta..."
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              onKeyDown={(e) => { if (e.key === 'Enter') sendMessage(); }}
+              onKeyDown={(e) => { if (e.key === "Enter") sendMessage(); }}
             />
-            <button type="button" onClick={sendMessage}>Enviar</button>
+            <button type="button" onClick={sendMessage}>
+              Enviar
+            </button>
           </div>
 
+<<<<<<< HEAD
           <small className="chat-note">A integração com Gemini deve ser feita no backend.</small>
+=======
+          <small className="chat-note">
+            Lembre-se: a IA é apenas orientativa. Procure um veterinário sempre que necessário.
+          </small>
+>>>>>>> d017e17796552918c6f9d6048fd7476e4d80f8b2
         </div>
       )}
     </div>

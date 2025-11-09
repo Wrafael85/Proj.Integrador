@@ -1,6 +1,9 @@
 
 import "./PetDiary.css";
 import { Link } from "react-router-dom";
+import alfredImg from "../../assets/alfred.jpeg"; 
+import valentinaImg from "../../assets/valentina.jpg";
+
 
 // Interface que define a estrutura de dados de um Pet
 interface Pet {
@@ -19,22 +22,22 @@ export default function PetDiary() {
   // Array com dados de exemplo dos pets
   const pets: Pet[] = [
     {
-      id: 1,
-      name: "Alfredo",
-      species: "Cachorro",
-      breed: "Golden Retriever",
-      age: 3,
-      weight: 28.5,
-      image: "/assets/alfredo.jpg"
+    id: 1,
+    name: "Alfredo",
+    species: "Cachorro",
+    breed: "Golden Retriever",
+    age: 3,
+    weight: 28.5,
+    image: alfredImg,
     },
     {
-      id: 2,
-      name: "Valentina",
-      species: "Gato", 
-      breed: "Siamês",
-      age: 2,
-      weight: 4.2,
-      image: "/assets/valentina.jpg"
+    id: 2,
+    name: "Valentina",
+    species: "Gato", 
+    breed: "Siamês",
+    age: 2,
+    weight: 4.2,
+    image: valentinaImg
     },
     {
       id: 3,
