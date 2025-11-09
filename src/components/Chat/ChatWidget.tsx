@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import "./Chat.css";
+import GeminiTest from "../../GeminiTest.tsx";
+
 
 type Message = { sender: "user" | "bot"; text: string };
 
@@ -18,7 +20,7 @@ export default function ChatWidget() {
     }
   }, [messages, open]);
 
-  function toggleOpen() {
+  function fuggleOpen() {
     setOpen((s) => !s);
   }
 
@@ -105,7 +107,7 @@ export default function ChatWidget() {
             <button type="button" onClick={sendMessage}>Enviar</button>
           </div>
 
-          <small className="chat-note">Lembrece a AI é apenas orientativa procure um veterinario.</small>
+          <small className="chat-note">A integração com Gemini deve ser feita no backend.</small>
         </div>
       )}
     </div>
